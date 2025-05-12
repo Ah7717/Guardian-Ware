@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Detect Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      background-color: #333;
+      color: white;
+      width: 100%;
+      padding: 1rem 0;
+      margin: 0;
+      text-align: center;
+    }
+
+    .container {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 500px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 1rem;
+    }
+
+    input[type="text"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    #trigger-container input {
+      margin-top: 0.5rem;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    #output {
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: #e8f4ea;
+      color: #2c662d;
+      border-left: 5px solid #2c662d;
+      border-radius: 5px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Detect Page</h1>
+
+  <div class="container">
+    <label for="sessionId">Session ID:</label>
+    <input type="text" id="sessionId" placeholder="Enter session ID">
+
+    <label>Trigger Words:</label>
+    <div id="trigger-container">
+      <input type="text" class="trigger-input" placeholder="Trigger word">
+    </div>
+    <button onclick="addTriggerInput()">+ Add Trigger</button>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" placeholder="+1234567890">
+
+    <p id="output">Waiting for detection...</p>
+  </div>
+
+  <script>
+    function addTriggerInput() {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'trigger-input';
+      input.placeholder = 'Trigger word';
+      document.getElementById('trigger-container').appendChild(input);
+    }
+
+    function getSessionId() {
+      return document.getElementById('sessionId').value.trim();
+    }
+
+    function getTriggers() {
+      return Array.from(document.querySelectorAll('.trigger-input'))
+        .map(i => i.value.trim()).filter(Boolean);
+    }
+
+    function getPhone() {
+      return document.getElementById('phone').value.trim();
+    }
+
+    async function detectFrame() {
+      if (!getSessionId()) return;
+
+      const form = new URLSearchParams();
+      form.append('id', getSessionId());
+      getTriggers().forEach(t => form.append('triggers[]', t));
+      form.append('phone', getPhone());
+
+      const res = await fetch('/detect', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: form.toString()
+      });
+
+      const result = await res.json();
+      document.getElementById('output').textContent = result.text;
+    }
+
+    setInterval(detectFrame, 1000); // Try detection every second
+  </script>
+</body>
+</html>

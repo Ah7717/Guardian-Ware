@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guardian Wear</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      width: 100%;
+      background-color: #333;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li {
+      cursor: pointer;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .hero {
+      height: 100vh;
+      background-image: url('../static/01.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-overlay {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+    }
+
+    .content-section {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 4rem 2rem;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .content-text {
+      flex: 1 1 300px;
+      max-width: 600px;
+    }
+
+    .content-text h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .content-text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .content-image {
+      flex: 1 1 300px;
+      max-width: 600px;
+    }
+
+    .content-image img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: black;
+    }
+
+    .text h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: black;
+    }
+
+    .demo-buttons {
+      margin-top: 1.5rem;
+    }
+
+    .demo-buttons a {
+      text-decoration: none;
+    }
+
+    .demo-buttons button {
+      margin: 0 1rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .demo-buttons button:hover {
+      background-color: #555;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Guardian Wear</div>
+    <ul>
+      <li><a href="/save">Companion App Demo</a></li>
+      <li><a href="/monitor">Smart Watch and Glasses Demo</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-overlay">
+      <h1>Welcome to Guardian Wear</h1>
+      <p>Empowering Independence, Ensuring Safety</p>
+    </div>
+  </div>
+
+  <!-- [CONTENT OMITTED FOR BREVITY - same as before] -->
+      <div class="content-section">
+    <div class="content-text">
+      <h2>Understanding the Challenge</h2>
+      <p>Children under five with Autism Spectrum Disorder (ASD) and related developmental conditions often struggle with loud noises, unfamiliar environments, or sudden changes in routine. These can lead to sensory overload, meltdowns, or complete withdrawal, making daily life overwhelming.</p>
+      <p>For caregivers, managing these reactions requires constant vigilance, which can be both mentally and physically draining. Striking a balance between keeping a child safe and encouraging independence is difficult.</p>
+    </div>
+    <div class="content-image">
+      <img src="../static/img (1).jpg" alt="Understanding ASD">
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="content-text">
+      <h2>Current Limitations</h2>
+      <p>While technologies like nanny cams or smart sensors offer help, they restrict children to confined, controlled environments. True freedom requires tools that support them wherever they go, not just in pre-defined “safe zones.”</p>
+      <p>Early intervention and structured support are key to helping children with mental disorders build confidence and life skills. Adaptive, mobile technology can make this more achievable.</p>
+    </div>
+    <div class="content-image">
+      <img src="../static/img (1).jpeg" alt="Technology Limitations">
+    </div>
+  </div>
+
+  <!-- <div class="content-section">
+    <div class="content-text">
+      <h2>Shifting the Research Mindset</h2>
+      <p>Most studies in wearable technology for autism have historically focused on fixing deficits rather than understanding the child’s needs. A 2020 study by Williams and Gilbert found that 90% of research treated autistic traits as issues to be solved, instead of exploring helpful capabilities like sensory comfort or emotional regulation.</p>
+      <p>This outdated mindset is now shifting. Medical communities are recognizing neurodiversity and beginning to develop tools that support—not suppress—unique ways of thinking and feeling.</p>
+    </div>
+    <div class="content-image">
+      <img src="../static/research.jpg" alt="Research Mindset">
+    </div>
+  </div> -->
+
+
+  <div class="content-section">
+    <div class="content-text">
+      <h2>Empowering Independence</h2>
+      <p>The ultimate goal is to help children navigate the world safely and independently, while easing the stress on caregivers. By combining personalized support with compassionate tech, we can open up more possibilities for growth and emotional well-being for both children and their families.</p>
+    </div>
+    <div class="content-image">
+      <img src="../static/img (2).jpeg" alt="Family Support">
+    </div>
+  </div>
+    <div class="content-section">
+    <div class="content-text">
+      <h2>Proposed Solution: Smart Wearables</h2>
+      <p>Children with mental disabilities frequently face panic attacks, anxiety episodes, and emotional meltdowns that hinder independent functioning. These wearables would offer real-time support by monitoring physiological signals and detecting signs of distress early.</p>
+      <p>Using biosensors, the devices can trigger calming feedback like vibrations, breathing guides, or caregiver alerts—helping children regain control and continue with their activities.</p>
+    </div>
+    <div class="content-image">
+      <img src="../static/img (3).jpeg" alt="Smart Wearables">
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="content-text">
+      <h2>Overview</h2>
+      <p>This safety system is designed for young children aged 3 to 5, aiming to balance independence and safety. It includes three main components: a pair of smart glasses, a specialized smartwatch, and a parent-facing companion app. These elements work together to monitor the child's environment and health, and provide instant communication when needed.</p>
+    </div>
+    <div class="content-image">
+      <img src="../static/02.jpg" alt="Overview Image">
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="content-text">
+      <h2>Smart Glasses</h2>
+      <p>The glasses are lightweight and comfortable, ensuring the child can wear them without discomfort. They feature a micro-lens that captures the child's point of view and transmits it to the smartwatch using Bluetooth. The glasses include a sealed, removable battery that is charged externally, making them resistant to water, mud, and dust, and removing the need for ports or onboard storage.</p>
+    </div>
+    <div class="content-image">
+      <img src="../static/glasses.webp" alt="Glasses Image">
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="content-text">
+      <h2>Smartwatch</h2>
+      <p>Designed to look like a regular smartwatch, it’s both affordable and discreet. It houses biometric sensors to track heart rate and blood oxygen levels, and connects to the glasses to buffer video data before transmitting it to the app. With a SIM card slot, it supports internet connectivity and calling. The side dial acts as an SOS button, playing a pre-recorded parent message and initiating emergency calls to guardians. It runs on a rechargeable, removable battery.</p>
+    </div>
+    <div class="content-image">
+      <img src="../static/img (4).jpeg" alt="Glasses Image">
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="content-text">
+      <h2>Companion App</h2>
+      <p>The app, used by parents, receives updates every 100ms from the watch. It displays real-time video and biometric data, alerts parents when thresholds are crossed, and detects visual triggers using a zero-shot object detection AI model. Parents can view the child’s environment, receive and make calls, and configure SOS responses through the app interface.</p>
+    </div>
+    <div class="content-image">
+      <img src="../static/img (5).jpeg" alt="Glasses Image">
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="content-text">
+      <h2>Benefits</h2>
+      <p>This system helps young children explore safely and gives parents peace of mind. It combines real-time health and visual monitoring with smart alerts and communication tools, enabling quick responses to any situation while supporting a child’s natural independence.</p>
+    </div>
+    <div class="content-image">
+      <img src="../static/family.jpg" alt="Benefits Image">
+    </div>
+  </div>
+  <center>
+    <div class="content-section">
+      <h2 class="text">DEMO</h2>
+      <p class="text">
+        I have created a demo for the idea. This demo is limited due to limited time and unavailability of hardware within the given time frame of this Designathon. It includes a recorder and monitoring page. These are linked using a session ID. The monitoring page only includes visual trigger detection.
+        <br>Please note the visual trigger detection is made using a pretrained model and therefore may not be very accurate.
+      </p>
+      <div class="demo-buttons">
+        <a href="/save"><button>Companion App Demo</button></a>
+        <a href="/monitor"><button>Smart Watch and Glasses Demo</button></a>
+      </div>
+    </div>
+  </center>
+
+</body>
+</html>

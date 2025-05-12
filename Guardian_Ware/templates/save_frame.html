@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Save Frame Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      background-color: #333;
+      color: white;
+      width: 100%;
+      padding: 1rem 0;
+      margin: 0;
+      text-align: center;
+    }
+
+    .container {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="text"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      width: 250px;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    video {
+      border: 3px solid #333;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      max-width: 90vw;
+    }
+
+    canvas {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Save Frame Page</h1>
+
+  <div class="container">
+    <label for="sessionId">Session ID:</label>
+    <input type="text" id="sessionId" placeholder="Enter session ID">
+
+    <video id="video" autoplay playsinline width="640" height="480"></video>
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => video.srcObject = stream)
+      .catch(err => console.error("Camera access failed"));
+
+    function getSessionId() {
+      return document.getElementById('sessionId').value.trim();
+    }
+
+    async function saveFrame() {
+      if (!getSessionId()) return;
+
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const dataUrl = canvas.toDataURL('image/jpeg');
+
+      const form = new URLSearchParams();
+      form.append('id', getSessionId());
+      form.append('image', dataUrl);
+
+      await fetch('/save_frame', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: form.toString()
+      });
+    }
+
+    video.addEventListener('loadedmetadata', () => {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      setInterval(saveFrame, 1000); // Save frame every second
+    });
+  </script>
+</body>
+</html>
