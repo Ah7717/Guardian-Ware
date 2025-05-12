@@ -1,7 +1,7 @@
 import logging
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
-
+import os
 
 from flask import Flask, render_template, request, jsonify
 import base64
