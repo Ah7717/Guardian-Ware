@@ -175,7 +175,7 @@ def detect():
     l = get_detected_objs(trigger_words, path=filename)
     l.sort()
     if last_l != l and l != []:
-       try:
+        try:
             client.messages.create(
                     body=f"Your dependant may be seeing {l}",
                     from_=twilio_number,
