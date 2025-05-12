@@ -175,11 +175,14 @@ def detect():
     l = get_detected_objs(trigger_words, path=filename)
     l.sort()
     if last_l != l and l != []:
-        client.messages.create(
-                body=f"Your dependant may be seeing {l}",
-                from_=twilio_number,
-                to=to_number
-            )
+       try:
+            client.messages.create(
+                    body=f"Your dependant may be seeing {l}",
+                    from_=twilio_number,
+                    to=to_number
+                )
+        except:
+            pass
         print(f"Your dependant may be seeing {l}")
     last_l = l.copy()
     print('Detected',str(l)[1:-1])
