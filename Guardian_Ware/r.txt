@@ -1,13 +1,8 @@
-logging
-flask
-base64
-PIL
+Flask
+Pillow
 twilio
 torch
 transformers
-skimage
-json
-sqlite3
 scikit-image
 opencv-python
 numpy
