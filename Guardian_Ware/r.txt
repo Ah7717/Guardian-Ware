@@ -1,4 +1,4 @@
-echo absl-py==2.2.2
+absl-py==2.2.2
 aioboto3==14.1.0
 aiobotocore==2.21.1
 aiofiles==24.1.0
