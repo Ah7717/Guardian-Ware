@@ -27,7 +27,7 @@ import numpy as np
 
 
 model_id = "IDEA-Research/grounding-dino-base"
-device = "cuda"
+device = "cpu"
 
 processor = AutoProcessor.from_pretrained(model_id)
 model = AutoModelForZeroShotObjectDetection.from_pretrained(model_id).to(device)
