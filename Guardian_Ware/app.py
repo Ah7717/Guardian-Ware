@@ -26,7 +26,7 @@ import numpy as np
 
 
 
-model_id = "IDEA-Research/grounding-dino-base"
+model_id = "IDEA-Research/grounding-dino-tiny"
 device = "cpu"
 
 processor = AutoProcessor.from_pretrained(model_id)
